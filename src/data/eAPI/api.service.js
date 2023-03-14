@@ -1,28 +1,28 @@
 const fetch = require("node-fetch");
-const { apiKey, url, urlPath } = require('../../constants');
+const { urlBuilder } = require('../../helperfunctions');
 
 async function callGetApi(params) {
+    let endpoint = '';
     // no api health check endpoint
     if (params === undefined) {
         console.log('Error: no parameters defined');
         throw new Error('Error: no parameters defined');
     }
-    let fullUrl = '';
-    fullUrl = fullUrl.concat(url);
-    fullUrl = fullUrl.concat(urlPath);
-    fullUrl = fullUrl.concat('?module=');
-    fullUrl = fullUrl.concat(params[1]);
-    fullUrl = fullUrl.concat('&action=');
-    fullUrl = fullUrl.concat(params[2]);
-    fullUrl = fullUrl.concat('&address=');
-    fullUrl = fullUrl.concat(params[0]);
-    fullUrl = fullUrl.concat('&apiKey=');
-    fullUrl = fullUrl.concat(apiKey);
     try {
-        let response = await fetch(fullUrl);
+        endpoint = urlBuilder(params);
+    } catch (err) {
+        console.log(err);
+    }
+    if (endpoint === '') {
+        console.log('Error: no url endpoint defined');
+        throw new Error('Error: no url endpoint defined');
+    }
+    
+    try {
+        let response = await fetch(endpoint);
         return await response.json();
     } catch (err) {
-        console.log('Error: ', err)
+        console.log(err)
     }
 };
 
