@@ -1,7 +1,7 @@
 // Library imports
 const express = require('express');
 const http = require('http');
-const appRouter = require('./src/routes/app.route');
+const contractsRouter = require('./src/routes/contracts.route');
 
 // Create the app using ExpressJS
 const app = express();
@@ -14,7 +14,7 @@ app.get('/health', (req, res) => {
     res.json({status: 'UP'});
 });
 
-app.use('/', appRouter);
+app.use('/contracts/', contractsRouter);
 
 // Error handling
 app.use((err, req, res, next) => {

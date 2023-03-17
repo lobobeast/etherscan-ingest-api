@@ -4,7 +4,7 @@ async function getAbi(req, res, next) {
     try {
         res.json(await contracts.getAbi(req.body));
     } catch (err) {
-        console.log('Error: ', err.message);
+        console.log(err.message);
         next(err);
     }
 };
@@ -13,7 +13,7 @@ async function getSC(req, res, next) {
     try {
         res.json(await contracts.getSC(req.body));
     } catch (err) {
-        console.log('Error: ', err.message);
+        console.log(err.message);
         next(err);
     }
 };

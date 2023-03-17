@@ -1,3 +1,5 @@
+const { apiKey, url, urlPath, uri } = require('./constants');
+
 // Setting up query parameters for use with REST API calls
 function buildConditionsGet(body) {
     let paramName = [];
@@ -15,4 +17,23 @@ function buildConditionsGet(body) {
     };
 };
 
-module.exports = {buildConditionsGet};
+function urlBuilder(params) {
+    if (params === undefined) {
+        console.log('Error: no parameters defined');
+        throw new Error('Error: no parameters defined');
+    }
+    let fullUrl = '';
+    fullUrl = fullUrl.concat(url);
+    fullUrl = fullUrl.concat(urlPath);
+    fullUrl = fullUrl.concat(uri)
+    fullUrl = fullUrl.replace('{1}', params[1]);
+    fullUrl = fullUrl.replace('{2}', params[2]);
+    fullUrl = fullUrl.replace('{3}', params[0]);
+    fullUrl = fullUrl.replace('{4}', apiKey);
+    return fullUrl;
+}
+
+module.exports = {
+    buildConditionsGet,
+    urlBuilder
+};

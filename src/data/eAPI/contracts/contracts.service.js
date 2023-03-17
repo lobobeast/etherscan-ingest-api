@@ -9,6 +9,7 @@ async function getAbi(body) {
     const queryParams = helper.buildConditionsGet(body);
     const keys = queryParams.key;
     let values = queryParams.values;
+    // probably move out the concat actions to a helper function so its just a func call to add these params
     values = values.concat(contractMod);
     values = values.concat(contractGetAbi);
 
