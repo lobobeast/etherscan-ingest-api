@@ -2,13 +2,14 @@
 const express = require('express');
 const http = require('http');
 const contractsRouter = require('./src/routes/contracts.route');
+const config = require('./config');
 
 // Create the app using ExpressJS
 const app = express();
 app.use(express.json());
 const server = http.createServer(app);
 // Define the port to run the app
-const port = 3000;
+const port = config.port;
 
 app.get('/health', (req, res) => {
     res.json({status: 'UP'});

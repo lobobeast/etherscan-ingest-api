@@ -1,4 +1,5 @@
-const { apiKey, url, urlPath, uri } = require('./constants');
+const config = require('../config');
+const { url, urlPath, uri } = require('./constants');
 
 // Setting up query parameters for use with REST API calls
 function buildConditionsGet(body) {
@@ -29,7 +30,7 @@ function urlBuilder(params) {
     fullUrl = fullUrl.replace('{1}', params[1]);
     fullUrl = fullUrl.replace('{2}', params[2]);
     fullUrl = fullUrl.replace('{3}', params[0]);
-    fullUrl = fullUrl.replace('{4}', apiKey);
+    fullUrl = fullUrl.replace('{4}', config.apiKey);
     return fullUrl;
 }
 
