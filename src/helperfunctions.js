@@ -1,4 +1,4 @@
-const { config } = require('../config');
+const config = require('../config');
 const { url, urlPath, uri } = require('./constants');
 
 // Setting up query parameters for use with REST API calls

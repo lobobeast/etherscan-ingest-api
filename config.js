@@ -9,6 +9,7 @@ const local = {
 
 const test = {
         apiKey: process.env.API_KEY,
+        url: process.env.TEST_URL || 'http://localhost',
         port: parseInt(process.env.TEST_PORT) || 3001
 };
 

@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:functional": "rm -f cucumber.json && npm i && cucumber-js -f json:cucumber.json cucumber/features -r cucumber/features/step_definitions",
+    "start:test": "node server",
     "start": "nodemon server"
   },
   "keywords": [],
@@ -17,6 +18,8 @@
     "node-fetch": "^2.6.9"
   },
   "devDependencies": {
+    "cucumber": "^6.0.7",
+    "got": "^11.8.3",
     "nodemon": "^2.0.21"
   }
 }
